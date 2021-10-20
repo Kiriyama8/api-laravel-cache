@@ -23,4 +23,9 @@ class CourseService
     {
         return $this->repository->createCourses($array);
     }
+
+    public function getCourse(string $id)
+    {
+        return $this->repository->getCourseByUuid($id);
+    }
 }

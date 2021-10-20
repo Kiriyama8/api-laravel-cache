@@ -11,3 +11,4 @@ Route::get('/', function () {
 
 Route::get('/courses', [CourseController::class, 'index']);
 Route::post('/courses', [CourseController::class, 'store']);
+Route::get('/course/{id}', [CourseController::class, 'show']);
