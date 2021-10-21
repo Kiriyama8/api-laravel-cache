@@ -28,4 +28,14 @@ class CourseService
     {
         return $this->repository->getCourseByUuid($id);
     }
+
+    public function updateCourse(string $id, array $array)
+    {
+        return $this->repository->updateCourseByUuid($id, $array);
+    }
+
+    public function deleteCourse(string $id)
+    {
+        return $this->repository->deleteCourseByUuid($id);
+    }
 }

@@ -11,4 +11,6 @@ Route::get('/', function () {
 
 Route::get('/courses', [CourseController::class, 'index']);
 Route::post('/courses', [CourseController::class, 'store']);
-Route::get('/course/{id}', [CourseController::class, 'show']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+Route::put('/courses/{course}', [CourseController::class, 'update']);
