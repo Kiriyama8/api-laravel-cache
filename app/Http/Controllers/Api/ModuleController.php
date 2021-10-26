@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateModule;
 use App\Http\Resources\ModuleResource;
 use App\Services\ModuleService;
-use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
@@ -20,7 +19,7 @@ class ModuleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(string $course)
     {
@@ -32,8 +31,8 @@ class ModuleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Controllers\Api\StoreUpdateModule $request
-     * @return \Illuminate\Http\Response
+     * @param StoreUpdateModule $request
+     * @return ModuleResource
      */
     public function store(StoreUpdateModule $request)
     {
@@ -45,8 +44,9 @@ class ModuleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param string $course
+     * @param string $id
+     * @return ModuleResource
      */
     public function show(string $course, string $id)
     {
@@ -58,7 +58,7 @@ class ModuleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Controllers\Api\StoreUpdateModule $request
+     * @param StoreUpdateModule $request
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
@@ -72,7 +72,7 @@ class ModuleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(string $id)
