@@ -41,12 +41,16 @@ class CourseRepository
     {
         $course = $this->getCourseByUuid($id, false);
 
+        Cache::forget('courses');
+
         return $course->update($array);
     }
 
     public function deleteCourseByUuid(string $id)
     {
         $course = $this->getCourseByUuid($id, false);
+
+        Cache::forget('courses');
 
         return $course->delete();
     }
