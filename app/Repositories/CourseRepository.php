@@ -28,9 +28,13 @@ class CourseRepository
 
     public function getCourseByUuid(string $id, bool $loadRelationships = true)
     {
-        return $this->entity->where('uuid', $id)
-            ->with([$loadRelationships ? 'modules.lessons' : ''])
-            ->firstOrFail();
+        $query = $this->entity->where('uuid', $id);
+
+        if ($loadRelationships) {
+            $query->with('modules.lessons');
+        }
+
+        return $query->firstOrFail();
     }
 
     public function updateCourseByUuid(string $id, array $array)
