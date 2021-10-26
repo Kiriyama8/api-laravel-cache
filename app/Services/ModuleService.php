@@ -34,13 +34,6 @@ class ModuleService
         return $this->moduleRepository->createModules($course->id, $array);
     }
 
-    public function getModuleByCourse(string $course, string $id)
-    {
-        $course = $this->courseRepository->getCourseByUuid($course);
-
-        return $this->moduleRepository->getModuleByCourse($course->id, $id);
-    }
-
     public function updateModule(string $id, array $array)
     {
         $course = $this->courseRepository->getCourseByUuid($array['course']);
