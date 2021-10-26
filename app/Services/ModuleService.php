@@ -52,5 +52,4 @@ class ModuleService
     {
         return $this->moduleRepository->deleteModuleByUuid($id);
     }
-
 }

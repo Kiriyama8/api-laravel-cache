@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
 class LessonResource extends JsonResource
 {
@@ -14,6 +15,12 @@ class LessonResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->uuid,
+            'name' => $this->name,
+            'video' => $this->video,
+            'description' => $this->description,
+            'date' => Carbon::make($this->created_at)->format('Y-m-d'),
+        ];
     }
 }
