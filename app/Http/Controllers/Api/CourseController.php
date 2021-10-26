@@ -64,7 +64,7 @@ class CourseController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(StoreUpdateModule $request, $id)
+    public function update(StoreUpdateCourse $request, $id)
     {
         $this->courseService->updateCourse($id, $request->validated());
 
