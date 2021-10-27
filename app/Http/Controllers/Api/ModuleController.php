@@ -50,7 +50,7 @@ class ModuleController extends Controller
      */
     public function show(string $course, string $id)
     {
-        $module = $this->moduleService->getModulesByCourse($course, $id);
+        $module = $this->moduleService->getModuleByCourse($course, $id);
 
         return new ModuleResource($module);
     }

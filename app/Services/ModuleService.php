@@ -41,6 +41,13 @@ class ModuleService
         return $this->moduleRepository->updateModuleByUuid($course->id, $id, $array);
     }
 
+    public function getModuleByCourse(string $course, string $id)
+    {
+        $course = $this->courseRepository->getCourseByUuid($course);
+
+        return $this->moduleRepository->getModuleByCourse($course->id, $id);
+    }
+
     public function deleteModule(string $id)
     {
         return $this->moduleRepository->deleteModuleByUuid($id);
