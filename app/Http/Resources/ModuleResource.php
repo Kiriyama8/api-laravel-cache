@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ModuleResource extends JsonResource
@@ -16,8 +15,8 @@ class ModuleResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'nome' => $this->name,
             'id' => $this->uuid,
+            'name' => $this->name,
             'lessons' => LessonResource::collection($this->whenLoaded('lessons'))
         ];
     }
