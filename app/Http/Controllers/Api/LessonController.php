@@ -19,9 +19,10 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param string $module
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index($module)
+    public function index(string $module)
     {
         $lessons = $this->lessonService->getLessonsByModule($module);
 
@@ -32,10 +33,10 @@ class LessonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreUpdateLesson $request
-     * @param $module
+     * @param string $module
      * @return LessonResource
      */
-    public function store(StoreUpdateLesson $request, $module)
+    public function store(StoreUpdateLesson $request, string $module)
     {
         $module = $this->lessonService->createLessons($request->validated());
 
@@ -45,10 +46,11 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $id
+     * @param string $module
+     * @param string $id
      * @return LessonResource
      */
-    public function show($module, $id)
+    public function show(string $module, string $id)
     {
         $module = $this->lessonService->getLessonByModule($module, $id);
 
@@ -63,7 +65,7 @@ class LessonController extends Controller
      * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(StoreUpdateLesson $request, string $module, $id)
+    public function update(StoreUpdateLesson $request, string $module, string $id)
     {
         $this->lessonService->updateLesson($id, $request->validated());
 
@@ -73,10 +75,11 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $id
+     * @param string $module
+     * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($module, $id)
+    public function destroy(string $module, string $id)
     {
         $this->lessonService->deleteLesson($id);
 
