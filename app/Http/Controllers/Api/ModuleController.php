@@ -59,10 +59,11 @@ class ModuleController extends Controller
      * Update the specified resource in storage.
      *
      * @param StoreUpdateModule $request
-     * @param int $id
+     * @param string $course
+     * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(StoreUpdateModule $request, $id)
+    public function update(StoreUpdateModule $request, string $course, string $id)
     {
         $this->moduleService->updateModule($id, $request->validated());
 
@@ -75,7 +76,7 @@ class ModuleController extends Controller
      * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(string $id)
+    public function destroy(string $course, string $id)
     {
         $course = $this->moduleService->deleteModule($id);
 

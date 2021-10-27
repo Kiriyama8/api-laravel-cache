@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Module;
+use Illuminate\Support\Facades\Cache;
 
 class ModuleRepository
 {
@@ -25,19 +26,19 @@ class ModuleRepository
         return $this->entity->create($array);
     }
 
-    public function getModuleByCourse(int $courseID, $id)
+    public function getModuleByCourse(int $courseID, string $id)
     {
-        return $this->entity->where([
-            ['course_id', '=', $courseID],
-            ['uuid', '=', $id]
-        ])->firstOrFail();
+        return $this->entity
+            ->where([
+                ['course_id', '=', $courseID],
+                ['uuid', '=', $id]
+            ])
+            ->firstOrFail();
     }
 
     public function getModuleByUuid(string $id)
     {
-        return $this->entity->where([
-            ['uuid', '=', $id]
-        ])->firstOrFail();
+        return $this->entity->where('uuid', $id)->firstOrFail();
     }
 
     public function updateModuleByUuid(int $courseID, string $id, array $array)
@@ -46,12 +47,16 @@ class ModuleRepository
 
         $array['course_id'] = $courseID;
 
+        Cache::forget('courses');
+
         return $module->update($array);
     }
 
     public function deleteModuleByUuid(string $id)
     {
         $module = $this->getModuleByUuid($id);
+
+        Cache::forget('courses');
 
         return $module->delete();
     }

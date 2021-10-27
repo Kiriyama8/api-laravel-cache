@@ -59,11 +59,11 @@ class LessonController extends Controller
      * Update the specified resource in storage.
      *
      * @param StoreUpdateLesson $request
-     * @param $module
+     * @param string $module
      * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(StoreUpdateLesson $request, $module, $id)
+    public function update(StoreUpdateLesson $request, string $module, $id)
     {
         $this->lessonService->updateLesson($id, $request->validated());
 
